@@ -24,7 +24,8 @@ document.getElementById("new-post").addEventListener("submit", (e) => {
     title: postTitle,
     body: postBody
   }
+  const jsonData = JSON.stringify(data);
+  console.log(jsonData);
 
 })
 
-// Comments
