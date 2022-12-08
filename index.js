@@ -24,13 +24,28 @@ document.getElementById("new-post").addEventListener("submit", (e) => {
     title: postTitle,
     body: postBody
   }
-  const jsonData = JSON.stringify(data);
-  fetch('https://apis.scrimba.com/jsonplaceholder/posts', {
-    method: 'POST',
+
+  const options = {
+    method: "POST",
+    body: JSON.stringify(data),
     headers: {
-      'Content-Type': 'application/json'
-    },
-    body: jsonData
-  });
+      "Content-Type": "application/json"
+    }
+  }
+
+  fetch("https://apis.scrimba.com/jsonplaceholder/posts", options)
+    .then(res => res.json())
+    .then(post => {
+      console.log(post)
+      /**
+       * Challenge: Update the DOM with the new blog entry
+       */
+      document.getElementById("blog-list").innerHTML = `
+            <h3>${post.title}</h3>
+            <p>${post.body}</p>
+            <hr />
+            ${document.getElementById("blog-list").innerHTML}
+        `
+    })
 })
 
