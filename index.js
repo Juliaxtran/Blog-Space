@@ -44,6 +44,7 @@ document.getElementById("new-post").addEventListener("submit", (e) => {
       console.log(post)
       postsArray.unshift(post)
       renderPosts()
+      document.getElementById("new-post").reset()
     })
 })
 
